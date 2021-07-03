@@ -4,6 +4,7 @@ new Vue({
         message: 'Sort Clum In Table',
         users:[],
         sort_key: "",
+        sort_asc: true,
     },
     mounted() {
         axios.get('https://jsonplaceholder.typicode.com/users')
@@ -15,15 +16,20 @@ new Vue({
     },
     methods: {
         sortBy(key) {
+            this.sort_key === key
+                ?(this.sort_asc = !this.sort_asc)
+                :(this.sort_asc = true);
             this.sort_key = key;
         },
     },
     computed: {
         sort_users() {
             if(this.sort_key !="") {
+                let set = 1;
+                this.sort_asc ? (set=1):(set=-1);
                 this.users.sort((a,b) => {
-                    if(a[this.sort_key]<b[this.sort_key]) return -1;
-                    if(a[this.sort_key]>b[this.sort_key]) return 1;
+                    if(a[this.sort_key]<b[this.sort_key]) return -1*set;
+                    if(a[this.sort_key]>b[this.sort_key]) return 1*set;
                     return 0;
                 });
                 return this.users;
