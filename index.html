@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>Vue.js sort学習</title>
+</head>
+<style>
+    table{
+        border-collapse: collapse;
+        width:100%
+    }
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+    th {
+        color:white;
+        background-color: #1E90FF;
+    }
+</style>
+<body>
+    <div id="app" v-cloak>
+        <h1>{{ message }}</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Website</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="user in users" :key="use.id">
+                    <td>{{ user.name }}</td>
+                    <td>{{ use.email }}</td>
+                    <td>{{ user.website }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="main.js"></script>
+</body>
