@@ -18,6 +18,20 @@ new Vue({
             this.sort_key = key;
         },
     },
+    computed: {
+        sort_users() {
+            if(this.sort_key !="") {
+                this.users.sort((a,b) => {
+                    if(a[this.sort_key]<b[this.sort_key]) return -1;
+                    if(a[this.sort_key]>b[this.sort_key]) return 1;
+                    return 0;
+                });
+                return this.users;
+            }else{
+                return this.users;
+            }
+        },
+    },
 })
 
 let array = [5,3,8,9,1]
