@@ -21,12 +21,23 @@ new Vue({
                 :(this.sort_asc = true);
             this.sort_key = key;
         },
+        addClass(key) {
+            return {
+                asc: this.sort_key === key && this.sort_asc,
+                desc: this.sort_key === key && !this.sort_asc,
+            }
+        }
     },
     computed: {
         sort_users() {
             if(this.sort_key !="") {
                 let set = 1;
-                this.sort_asc ? (set=1):(set=-1);
+                // this.sort_asc ? (set=1):(set=-1);
+                if(this.sort_asc ){
+                    set = 1
+                }else{
+                    set=-1
+                }
                 this.users.sort((a,b) => {
                     if(a[this.sort_key]<b[this.sort_key]) return -1*set;
                     if(a[this.sort_key]>b[this.sort_key]) return 1*set;

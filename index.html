@@ -18,6 +18,12 @@
         color:white;
         background-color: #1E90FF;
     }
+    .asc::after {
+        content: "↓";
+    }
+    .desc::after {
+        content: "↑";
+    }
 </style>
 <body>
     <div id="app" v-cloak>
@@ -26,9 +32,9 @@
         <table>
             <thead>
                 <tr>
-                    <th @click="sortBy('name')">Name</th>
-                    <th @click="sortBy('email')">Email</th>
-                    <th @click="sortBy('website')">Website</th>
+                    <th @click="sortBy('name')" :class="addClass('name')">Name</th>
+                    <th @click="sortBy('email')" :class="addClass('email')">Email</th>
+                    <th @click="sortBy('website')" :class="addClass('website')">Website</th>
                 </tr>
             </thead>
             <tbody>
